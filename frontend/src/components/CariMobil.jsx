@@ -1,11 +1,14 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Card, Col, Container, Form, Nav, Offcanvas, Row } from 'react-bootstrap';
 
 import 'owl.carousel/dist/assets/owl.carousel.min.css';
 import 'owl.carousel/dist/assets/owl.theme.default.min.css';
 
-import { FaUserAlt } from 'react-icons/fa';
+import { FaUsers } from 'react-icons/fa';
+import iconCalendar from '../assets/img/fi_calendar.png';
+import iconSettings from '../assets/img/fi_settings.png';
+import iconUser from '../assets/img/fi_users.png';
 import imgIconFacebook from '../assets/img/icon_facebook.png';
 import imgIconInstagram from '../assets/img/icon_instagram.png';
 import imgIconMail from '../assets/img/icon_mail.png';
@@ -35,9 +38,6 @@ const CariMobil = () => {
     getCars();
   }, []);
 
-  const handleTypeDriver = (event) => {
-    console.log(event.target.value);
-  };
 
   return (
     <div>
@@ -151,7 +151,7 @@ const CariMobil = () => {
         </Container>
       </header>
 
-      {/* cari mobil */}
+      {/* form cari mobil */}
       <Container>
         <Row className="mx-auto">
           <Col>
@@ -159,20 +159,20 @@ const CariMobil = () => {
               <Card.Body>
                 <Row className="align-items-lg-start">
                   <Col className="col-tipe-driver">
-                    <h6 class="card-title">Tipe Driver</h6>
-                    <select class="form-select" id="type" onChange={(e) => setTypedriver(e.target.value)}>
+                    <h6 className="card-title">Tipe Driver</h6>
+                    <select className="form-select" id="type" onChange={(e) => setTypedriver(e.target.value)}>
                       <option selected>Pilih Tipe Driver</option>
                       <option value="true">Dengan Kunci</option>
                       <option value="false">Lepas Kunci</option>
                     </select>
                   </Col>
                   <Col className="col-tanggal">
-                    <h6 class="card-title">Tanggal</h6>
+                    <h6 className="card-title">Tanggal</h6>
                     <Form.Control type="date" id="tanggal" placeholder="Pilih Tanggal" />
                   </Col>
                   <Col className="col-waktu-jemput">
-                    <h6 class="card-title">Waktu Jemput/Ambil</h6>
-                    <select class="form-select" id="waktu">
+                    <h6 className="card-title">Waktu Jemput/Ambil</h6>
+                    <select className="form-select" id="waktu">
                       <option selected>Pilih Waktu</option>
                       <option value="1">08.00 WIB</option>
                       <option value="2">09.00 WIB</option>
@@ -182,9 +182,9 @@ const CariMobil = () => {
                     </select>
                   </Col>
                   <Col className="col-jumlah-penumpang">
-                    <h6 class="card-title">Jumlah Penumpang</h6>
+                    <h6 className="card-title">Jumlah Penumpang</h6>
                     <Form.Control type="number" onChange={(e) => setQuery(e.target.value)} id="penumpang" placeholder="Jumlah Penumpang" />
-                    <FaUserAlt className="icon-jumlah-penumpang" />
+                    <FaUsers className="icon-jumlah-penumpang" />
                   </Col>
                   <Col className="col-btn">
                     <Button variant="success">Cari Mobil</Button>
@@ -194,7 +194,10 @@ const CariMobil = () => {
             </Card>
           </Col>
         </Row>
+      </Container>
 
+      {/* hasil cari mobil */}
+      <Container fluid style={{ padding: '0px 10% 100px 10%' }}>
         <Row>
           {cars
             .filter((car) => {
@@ -206,14 +209,25 @@ const CariMobil = () => {
             })
             .filter((car) => car.capacity == query)
             .map((car) => (
-              <Col md={4} className="mt-3">
-                <Card>
-                  <Card.Img variant="top" src={car.image} style={{ objectFit: 'cover', width: '355.59px', height: '240px' }} />
+              <Col>
+                <Card className="mb-3" style={{ width: '333px', height: '586px' }}>
+                  <Card.Img variant="top" src={car.image} style={{ objectFit: 'cover', width: '332px', height: '240px' }} />
                   <Card.Body>
                     <Card.Title>{car.manufacture}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted"> {car.rentPerDay} </Card.Subtitle>
                     <Card.Text>{car.description}</Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
+                    <ul className="list-unstyled">
+                      <li className="mb-3">
+                        <img src={iconUser} /> {car.capacity}
+                      </li>
+                      <li className="mb-3">
+                        <img src={iconSettings} /> {car.transmission}
+                      </li>
+                      <li className="mb-3">
+                        <img src={iconCalendar} /> {car.year}
+                      </li>
+                    </ul>
+                    <Button variant="success">Sewa Mobil</Button>
                   </Card.Body>
                 </Card>
               </Col>

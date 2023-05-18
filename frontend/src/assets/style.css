@@ -237,48 +237,53 @@
 
 /* cari mobil */
 .cari-mobil {
-    position: relative;
-    right: 3px;
-    bottom: 30px;
-    height: 120px;
+  position: relative;
+  right: 3px;
+  bottom: 30px;
+  height: 120px;
 }
 
 .col-tipe-driver {
-    position: relative;
-    left: 30px;
-    width: 200px;
+  position: relative;
+  left: 30px;
+  width: 200px;
 }
 
 .col-tanggal {
-    position: relative;
-    left: 30px;
-    width: 230px;
+  position: relative;
+  left: 30px;
+  width: 230px;
 }
 
 .col-waktu-jemput {
-    position: relative;
-    left: 30px;
-    width: 230px;
+  position: relative;
+  left: 30px;
+  width: 230px;
 }
 
 .col-jumlah-penumpang {
-    position: relative;
-    left: 30px;
-    width: 230px;
+  position: relative;
+  left: 30px;
+  width: 230px;
 }
 
 .col-btn {
-    position: relative;
-    left: 25px;
-    top: 28.2px;
+  position: relative;
+  left: 25px;
+  top: 28.2px;
 }
 
 .icon-jumlah-penumpang {
-    position: relative;
-    top: -32px;
-    left: 165px;
+  position: relative;
+  top: -32px;
+  left: 165px;
 }
 
+.card-icon-penumpang {
+  position: relative;
+  top: -33px;
+  left: 287px;
+}
 
 /* footer */
 .footer-list {
