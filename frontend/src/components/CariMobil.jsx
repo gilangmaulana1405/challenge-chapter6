@@ -209,6 +209,7 @@ const CariMobil = () => {
             })
             .filter((car) => car.capacity == query)
             .map((car) => (
+              // eslint-disable-next-line react/jsx-key
               <Col>
                 <Card className="mb-3" style={{ width: '333px', height: '586px' }}>
                   <Card.Img variant="top" src={car.image} style={{ objectFit: 'cover', width: '332px', height: '240px' }} />
